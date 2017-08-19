@@ -131,13 +131,9 @@ class TestLogFilter:
         (['eggs.bacon', 'spam.ham'], 'spam.ham.salami', True),
     ])
     def test_logfilter(self, logger, filters, category, logged):
-        pjr_logger = logging.getLogger("PHILIP")
         logfilter = log.LogFilter(filters)
-        pjr_logger.info ("I have a logfilter that is %s" % logfilter)
         record = self._make_record(logger, category)
-        pjr_logger.info ("I have a record that is %s" % record)
         assert logfilter.filter(record) == logged
-        pjr_logger.info ("The result is %s" % logfilter.filter(record) )
 
     @pytest.mark.parametrize('category', ['eggs', 'bacon'])
     def test_debug(self, logger, category):

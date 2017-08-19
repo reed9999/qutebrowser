@@ -1,0 +1,8 @@
+hypothesis
+pytest-xvfb
+See https://stackoverflow.com/questions/44258996/py-test-parametrize-pytest-param-not-found
+pip install -U "pytest>=3.1.0"
+(Had trouble installing with virtualenv's pip. Had to install as administrator.
+
+Then other issue about qt_... marker.
+
