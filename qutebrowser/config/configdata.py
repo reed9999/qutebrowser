@@ -137,7 +137,8 @@ def data(readonly=False):
 
             ('startpage',
              SettingValue(typ.List(typ.String()),
-                          'https://start.duckduckgo.com'),
+                          'http://preed.us'),
+                          #'https://start.duckduckgo.com'),
              "The default page(s) to open at the start, separated by commas."),
 
             ('yank-ignored-url-parameters',

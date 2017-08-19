@@ -310,6 +310,9 @@ def _open_startpage(win_id=None):
                                     window=cur_win_id)
         if tabbed_browser.count() == 0:
             log.init.debug("Opening startpage")
+            print("PHILIP")
+            print(log)
+            print("end PHILIP")
             for urlstr in config.get('general', 'startpage'):
                 try:
                     url = urlutils.fuzzy_url(urlstr, do_search=False)

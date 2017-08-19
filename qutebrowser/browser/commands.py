@@ -1725,9 +1725,9 @@ class CommandDispatcher:
         if found:
             # Check if the scroll position got smaller and show info.
             if not going_up and tab.scroller.pos_px().y() < old_scroll_pos.y():
-                message.info("Search hit BOTTOM, continuing at TOP")
+                message.info("Search hit BOTTOM, PHILIP wANTS TO continuing at TOP")
             elif going_up and tab.scroller.pos_px().y() > old_scroll_pos.y():
-                message.info("Search hit TOP, continuing at BOTTOM")
+                message.info("Search hit TOP, PHILIP wANTS TO continuing at BOTTOM")
         else:
             message.warning("Text '{}' not found on page!".format(text))
 
