@@ -253,6 +253,7 @@ def test_ignore_py_warnings(caplog):
         warnings.warn("hidden", UserWarning)
     with caplog.at_level(logging.WARNING):
         warnings.warn("not hidden", UserWarning)
+    import pdb; pdb.set_trace()
     assert len(caplog.records) == 1
     msg = caplog.records[0].message.splitlines()[0]
     assert msg.endswith("UserWarning: not hidden")

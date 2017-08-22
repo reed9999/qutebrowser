@@ -28,6 +28,7 @@ from PyQt5.QtCore import pyqtSlot, QUrl, QObject
 from qutebrowser.config import config, configexc
 from qutebrowser.commands import cmdexc, cmdutils
 from qutebrowser.utils import message, objreg, qtutils, usertypes, utils
+from qutebrowser.utils import log #PHILIP
 from qutebrowser.misc import split
 
 
@@ -38,6 +39,9 @@ last_command = {}
 def _current_url(tabbed_browser):
     """Convenience method to get the current url."""
     try:
+        #PHILIP this doesn't work -- log not valid in this context as it was in commands.py
+        log.reed9999.info("tabbed_browser.current_url" + tabbed_browser.current_url)
+        log.reed9999.info("tabbed_browser type" + type(tabbed_browser))
         return tabbed_browser.current_url()
     except qtutils.QtValueError as e:
         msg = "Current URL is invalid"
@@ -134,6 +138,8 @@ class CommandRunner(QObject):
             ParseResult tuples.
         """
         text = text.strip().lstrip(':').strip()
+        #PHILIP this doesn't work -- log not valid in this context as it was in commands.py
+        #LOG.Reed9999.info("text in the parser is %s" % text)
         if not text:
             raise cmdexc.NoSuchCommandError("No command given")
 
@@ -166,7 +172,10 @@ class CommandRunner(QObject):
         Return:
             A ParseResult tuple.
         """
+        #Will prob also break
+        #log.reed9999.info("text in the single parser is %s" % text)
         cmdstr, sep, argstr = text.partition(' ')
+        #log.reed9999.info("cmdstr, sep, argstr %s %s %s" % (cmdstr, sep, argstr ))
 
         if not cmdstr and not fallback:
             raise cmdexc.NoSuchCommandError("No command given")

@@ -1186,6 +1186,11 @@ class CommandDispatcher:
     @cmdutils.register(instance='command-dispatcher', scope='window')
     def home(self):
         """Open main startpage in current tab."""
+        log.reed9999.info("What is the startpage (possible array)? %s" % config.get('general', 'startpage'))
+        interesting_thing = config.get('general', 'startpage')[0]
+        log.reed9999.info("type of element 0? %s" % type(interesting_thing))
+        log.reed9999.info("element 0? %s" % interesting_thing)
+        import pdb; pdb.set_trace()
         self.openurl(config.get('general', 'startpage')[0])
 
     def _run_userscript(self, cmd, *args, verbose=False):

@@ -94,7 +94,8 @@ LOGGER_NAMES = [
     'commands', 'signals', 'downloads',
     'js', 'qt', 'rfc6266', 'ipc', 'shlexer',
     'save', 'message', 'config', 'sessions',
-    'webelem', 'prompt', 'network', 'sql'
+    'webelem', 'prompt', 'network', 'sql', 
+    'reed9999', #PHILIP
 ]
 
 
@@ -114,6 +115,7 @@ logging.Logger.vdebug = vdebug
 
 
 # The different loggers used.
+# Isn't this an obvious DRY violation? -- PHILIP reed9999
 statusbar = logging.getLogger('statusbar')
 completion = logging.getLogger('completion')
 destroy = logging.getLogger('destroy')
@@ -142,6 +144,7 @@ webelem = logging.getLogger('webelem')
 prompt = logging.getLogger('prompt')
 network = logging.getLogger('network')
 sql = logging.getLogger('sql')
+reed9999 = logging.getLogger('reed9999')
 
 
 ram_handler = None

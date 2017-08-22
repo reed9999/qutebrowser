@@ -162,7 +162,9 @@ class ModeManager(QObject):
         """
         curmode = self.mode
         parser = self._parsers[curmode]
+        log.reed9999.info("PHILIP special curmode %s" % curmode)
         if curmode != usertypes.KeyMode.insert:
+            log.reed9999.info("PHILIP special keypress: %s" % utils.qualname(parser))
             log.modes.debug("got keypress in mode {} - delegating to "
                             "{}".format(curmode, utils.qualname(parser)))
         handled = parser.handle(event)

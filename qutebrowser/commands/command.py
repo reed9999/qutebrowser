@@ -507,6 +507,7 @@ class Command:
         if count is not None:
             dbgout.append("(count={})".format(count))
         log.commands.debug(' '.join(dbgout))
+        log.reed9999.info(' '.join(dbgout))
         try:
             self.namespace = self.parser.parse_args(args)
         except argparser.ArgumentParserError as e:
@@ -520,6 +521,8 @@ class Command:
         self._count = count
         self._check_prerequisites(win_id)
         posargs, kwargs = self._get_call_args(win_id)
+        log.reed9999.info("THIS IS A COMMAND CALL (exciting) %s" % 
+            debug_utils.format_call(self.handler, posargs, kwargs))
         log.commands.debug('Calling {}'.format(
             debug_utils.format_call(self.handler, posargs, kwargs)))
         self.handler(*posargs, **kwargs)
