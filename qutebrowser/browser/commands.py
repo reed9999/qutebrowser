@@ -1183,14 +1183,19 @@ class CommandDispatcher:
             else:
                 proc.start(cmd, args)
 
+    def hacking_PJR(self):
+        interesting_thing = config.get('general', 'startpage')[0]
+        log.reed9999.info("element 0? %s" % interesting_thing)
+        import pdb; pdb.set_trace()
+    def hacking_PJR2(self, url):
+        log.reed9999.info("Are we now in the code to open a URL?")
+        log.reed9999.info("the URL is %s" % url)
+        import pdb; pdb.set_trace()
+
     @cmdutils.register(instance='command-dispatcher', scope='window')
     def home(self):
         """Open main startpage in current tab."""
-        log.reed9999.info("What is the startpage (possible array)? %s" % config.get('general', 'startpage'))
-        interesting_thing = config.get('general', 'startpage')[0]
-        log.reed9999.info("type of element 0? %s" % type(interesting_thing))
-        log.reed9999.info("element 0? %s" % interesting_thing)
-        import pdb; pdb.set_trace()
+        self.hacking_PJR()
         self.openurl(config.get('general', 'startpage')[0])
 
     def _run_userscript(self, cmd, *args, verbose=False):
@@ -1332,6 +1337,8 @@ class CommandDispatcher:
             window: Load the bookmark in a new window.
             delete: Whether to delete the bookmark afterwards.
         """
+        self.hacking_PJR()
+        self.hacking_PJR2()
         try:
             qurl = urlutils.fuzzy_url(url)
         except urlutils.InvalidUrlError as e:

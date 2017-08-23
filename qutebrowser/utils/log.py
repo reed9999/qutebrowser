@@ -575,7 +575,13 @@ class ColoredFormatter(logging.Formatter):
         if self.use_colors:
             color_dict = dict(COLOR_ESCAPES)
             color_dict['reset'] = RESET_ESCAPE
+            #PHILIP silliness. can we hard code the color???
             log_color = LOG_COLORS[record.levelname]
+#            try:
+#                log_color = "orange"     #LOG_COLORS[record.levelname]
+#            except:
+#                import pdb; pdb.set_trace()
+#                log_color = "red"     #LOG_COLORS[record.levelname]
             color_dict['log_color'] = COLOR_ESCAPES[log_color]
         else:
             color_dict = {color: '' for color in COLOR_ESCAPES}
