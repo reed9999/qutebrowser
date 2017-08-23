@@ -247,13 +247,21 @@ def test_stub(caplog, suffix, expected):
     assert caplog.records[0].message == expected
 
 
+def test_pjr(caplog):
+    """PHILIP version of test_ignore_py_warnings"""
+    logging.captureWarnings(True)
+    log.ignore_py_warnings(category=UserWarning)
+    warnings.warn("hidden", UserWarning)
+    caplog.at_level(logging.WARNING)
+    warnings.warn("not hidden", UserWarning)
+    import pdb; pdb.set_trace()
+    log.ignore_py_warnings(category=UserWarning)
 def test_ignore_py_warnings(caplog):
     logging.captureWarnings(True)
     with log.ignore_py_warnings(category=UserWarning):
         warnings.warn("hidden", UserWarning)
     with caplog.at_level(logging.WARNING):
         warnings.warn("not hidden", UserWarning)
-    import pdb; pdb.set_trace()
     assert len(caplog.records) == 1
     msg = caplog.records[0].message.splitlines()[0]
     assert msg.endswith("UserWarning: not hidden")
